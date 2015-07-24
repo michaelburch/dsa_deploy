@@ -10,7 +10,7 @@ To run this script you will need:
 
 When the script completes you will have:
  1. An instance of django-sample-app running in a dedicated user context. 
- 2. nginx serving the static files on <server.ip.addr.here>:80 
+ 2. nginx serving the static files on server.ip.addr.here:80 
  3. uwsgi hosting the app in a python venv
  4. firewalld blocking all traffic except 80,443, and ICMP from anywhere and SSH from local subnets
 
@@ -20,6 +20,6 @@ INSTRUCTIONS:
 
 2. Run the script with sudo (sudo ./django_sample_deploy.sh), entering your password when prompted
 
-3. When you see the message 'Deployment Complete!' browse to the site to test it (http://<server.ip.addr.here>)
+3. When you see the message 'Deployment Complete!' browse to the site to test it (http://server.ip.addr.here)
 
 
