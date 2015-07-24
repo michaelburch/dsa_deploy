@@ -15,3 +15,6 @@ When the script completes you will have:
  4. firewalld blocking all traffic except 80,443, and ICMP from anywhere and SSH from local subnets
 
 INSTRUCTIONS:
+1. Make the script executable (chmod +x ./django_sample_deploy.sh)
+2. Run the script with sudo (sudo ./django_sample_deploy.sh), entering your password when prompted
+3. When you see the message 'Deployment Complete!' browse to the site to test it (http://<server.ip.addr.here>)
