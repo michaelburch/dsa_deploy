@@ -18,7 +18,7 @@ INSTRUCTIONS:
 
 1. Copy the content of the script and paste into a new file using notepad, save it as django_sample_deploy.ps1 
 
-2. Open a powershell prompt and enter: powershell django_sample_deploy.ps1 -executionpolicy unrestricted 
+2. Open a powershell prompt and enter: powershell ./django_sample_deploy.ps1 -executionpolicy unrestricted 
 
 3. When the script completes browse to the site to test it (http://server.ip.addr.here)
 
