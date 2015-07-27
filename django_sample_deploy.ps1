@@ -52,6 +52,7 @@ sed -i s/'projectname.home'/django_sample.home/g c:\projects\django-sample-app\d
 $secret_key="nwz=djtu3@zhdlkin6ib=l#tu)gtu10%1y2#qmb@cyhkat8mez"
 sed -i s/'$secret_key'/$secret_key/g c:\projects\django-sample-app\django_sample\settings\default.py
 sed -i s/'ALLOWED_HOSTS = ('/'ALLOWED_HOSTS = ( ""*""'/g c:\projects\django-sample-app\django_sample\settings\default.py
+# WFastCGI needs to be modified to import django and call django.setup() at launch
 sed -i '22 a\import django' c:\projects\django-sample-app\django_sample\wfastcgi.py
 sed -i '373 a\    django.setup()' c:\projects\django-sample-app\django_sample\wfastcgi.py
 
