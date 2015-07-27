@@ -85,7 +85,7 @@ C:\windows\system32\inetsrv\appcmd.exe set config "dsa/media" -section:handlers 
 
 # Allow the app pool identity access to the project folder
 $acl=get-acl C:\projects\django-sample-app
-$acl.SetAccessRuleProtection($True,$False)
+$acl.SetAccessRuleProtection($False,$True)
 $rule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS AppPool\dsa","Modify","ContainerInherit,ObjectInherit","None","Allow")
 $acl.AddAccessRule($rule)
 Set-acl c:\projects\django-sample-app $acl
