@@ -83,6 +83,13 @@ curl http://localhost | out-null
 C:\windows\system32\inetsrv\appcmd.exe set config "dsa/static" -section:handlers /-"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Unspecified']" /commit:apphost
 C:\windows\system32\inetsrv\appcmd.exe set config "dsa/media" -section:handlers /-"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Unspecified']" /commit:apphost
 
+# Allow the app pool identity access to the project folder
+$acl=get-acl C:\projects\django-sample-app
+$acl.SetAccessRuleProtection($True,$False)
+$rule = New-Object System.Security.AccessControl.FileSystemAccessRule("IIS AppPool\dsa","Modify","ContainerInherit,ObjectInherit","None","Allow")
+$acl.AddAccessRule($rule)
+Set-acl c:\projects\django-sample-app $acl
+
 
 # Allow ping, HTTP and HTTPS from everywhere
 New-NetFirewallRule -Name Allow_Ping -DisplayName "Allow Ping" -Protocol ICMPv4 -IcmpType 8 -Enabled True -Profile Any -Action Allow 
