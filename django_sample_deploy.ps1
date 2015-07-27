@@ -76,12 +76,12 @@ C:\windows\system32\inetsrv\appcmd.exe set config -section:system.webServer/fast
 C:\windows\system32\inetsrv\appcmd add apppool /name:dsa
 C:\windows\system32\inetsrv\appcmd add site /name:dsa /bindings:http://*:80 /physicalPath:c:\projects\django-sample-app\
 C:\windows\system32\inetsrv\appcmd set app "dsa/" /applicationPool:dsa
-C:\windows\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Either']" /commit:apphost
+C:\windows\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Unspecified']" /commit:apphost
 curl http://localhost | out-null
 
 # Remove the fastcgi handler from the static and media folders
-C:\windows\system32\inetsrv\appcmd.exe set config "dsa/static" -section:handlers /-"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Either']" /commit:apphost
-C:\windows\system32\inetsrv\appcmd.exe set config "dsa/media" -section:handlers /-"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Either']" /commit:apphost
+C:\windows\system32\inetsrv\appcmd.exe set config "dsa/static" -section:handlers /-"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Unspecified']" /commit:apphost
+C:\windows\system32\inetsrv\appcmd.exe set config "dsa/media" -section:handlers /-"[name='django_fcgi',path='*',verb='*',modules='FastCgiModule',scriptProcessor='C:\python27\virtualenvs\dsa\scripts\python.exe|C:\projects\django-sample-app\django_sample\wfastcgi.py',resourceType='Unspecified']" /commit:apphost
 
 
 # Allow ping, HTTP and HTTPS from everywhere
